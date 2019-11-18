@@ -16,7 +16,9 @@
     "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.0.1",
-    "cordova-plugin-fullscreen": "^1.2.0"
+    "cordova-plugin-fullscreen": "^1.2.0",
+    "cordova-plugin-screen-orientation": "^3.0.2",
+    "es6-promise-plugin": "^4.2.2"
   },
   "devDependencies": {
     "cordova-plugin-whitelist": "1"
@@ -24,7 +26,8 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-fullscreen": {}
+      "cordova-plugin-fullscreen": {},
+      "cordova-plugin-screen-orientation": {}
     },
     "platforms": [
       "android",

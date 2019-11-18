@@ -321,7 +321,8 @@ let setValueOfDialogAmountEntry = async function() {
 
 document.addEventListener('init', async function(event) {
     let page = event.target;
-
+    // lock Screen Orientation
+    window.screen.orientation.lock('portrait');
     if (page.id === 'login') {
         page.querySelector('#push-button').onclick = async function() {
             //consume api

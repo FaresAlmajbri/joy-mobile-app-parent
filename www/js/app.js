@@ -346,6 +346,10 @@ document.addEventListener('init', async function(event) {
             }
             // document.querySelector('#myNavigator').pushPage('main.html', {data: {title: 'Page 2'}});
         };
+
+        page.querySelector('#register-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/register.html');
+        }
     }
 
 

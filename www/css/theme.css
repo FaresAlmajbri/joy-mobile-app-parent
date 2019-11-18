@@ -3,7 +3,7 @@
 
 :root {
   /* variables for iOS components */
-  --background-color: #99AABB;
+  --background-color: rgba(255,255,255,1);
   --text-color: #1f1f21;
   --sub-text-color: #999;
   --highlight-color: #665588;
@@ -74,7 +74,7 @@
   --select-input-border-color: var(--border-color);
 
   /* variables for Material Design components */
-  --material-background-color: rgba(0,0,0,0.28);
+  --material-background-color: rgba(255,255,255,1);
   --material-text-color: var(--text-color);
   --material-notification-background-color: #e91e63;
   --material-notification-color: white;

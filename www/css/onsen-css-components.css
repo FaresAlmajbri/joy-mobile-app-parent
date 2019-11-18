@@ -107,7 +107,8 @@ h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  background-color: #99AABB;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
   position: absolute;
   top: 0;
   left: 0;
@@ -123,7 +124,8 @@ h4, h5, h6 {
   display: none;
 }
 .page__content {
-  background-color: #99AABB;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
   position: absolute;
   top: 0;
   left: 0;
@@ -132,7 +134,8 @@ h4, h5, h6 {
   box-sizing: border-box;
 }
 .page__background {
-  background-color: #99AABB;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
   position: absolute;
   top: 0;
   left: 0;
@@ -144,8 +147,8 @@ h4, h5, h6 {
   font-family: 'Roboto', 'Noto', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
-  background-color: #000000;
-  background-color: rgba(0, 0, 0, .28);
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
 }
 .page--material__content {
   font-family: 'Roboto', 'Noto', sans-serif;
@@ -196,8 +199,8 @@ h4, h5, h6 {
   font-size: 20px;
 }
 .page--material__background {
-  background-color: #000000;
-  background-color: rgba(0, 0, 0, .28);
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
 }
 :root { /* background color active */
 }
@@ -4882,7 +4885,8 @@ h4, h5, h6 {
   font-weight: 400;
   border-radius: 4px;
   border: 1px solid #9977AA;
-  background-color: #99AABB;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
   color: #1f1f21;
   letter-spacing: 0;
   box-shadow: none;

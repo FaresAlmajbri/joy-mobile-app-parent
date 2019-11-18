@@ -1,0 +1,41 @@
+<ons-page id="page2">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>الرئيسية</ons-back-button></div>
+        <div class="right" style="margin-right: 10vw">إختار المستشفي</div>
+    </ons-toolbar>
+    <ons-row>
+        <ons-col style = "direction: rtl;">
+            <div style="text-align: center; " >
+                <ons-list>
+                    <ons-lazy-repeat id="infinite-list" modifier="longdivider"></ons-lazy-repeat>
+                </ons-list>
+
+                <ons-list>
+                    <ons-list-item modifier="longdivider">Item A</ons-list-item>
+                    <ons-list-item modifier="longdivider">Item B</ons-list-item>
+                </ons-list>
+            </div>
+        </ons-col>
+    </ons-row>
+
+</ons-page>
+
+<!--<script type="text/javascript">-->
+<!--    ons.ready(function() {-->
+<!--        var infiniteList = document.getElementById('infinite-list');-->
+
+<!--        infiniteList.delegate = {-->
+<!--            createItemContent: function(i) {-->
+<!--                return ons.createElement('<ons-list-item tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> المستشفي رقم ' + i + '  </ons-list-item>');-->
+<!--            },-->
+<!--            countItems: function() {-->
+<!--                return 10000;-->
+<!--            }-->
+<!--        };-->
+
+<!--        infiniteList.refresh();-->
+<!--    });-->
+
+<!--</script>-->
+
+      

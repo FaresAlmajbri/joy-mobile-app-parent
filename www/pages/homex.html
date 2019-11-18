@@ -1,0 +1,100 @@
+<ons-page id="homex.html" style="background-color: red; !important;">
+
+    <ons-toolbar>
+        <ons-row>
+            <ons-col vertical-align="center">
+                <ons-toolbar-button page="home.html" id="credit-button" icon="md-info"></ons-toolbar-button>
+            </ons-col>
+            <ons-col vertical-align="center" width="50%" style="text-align:right;">
+                <div class="center" style="align-content: center; padding-left: 5%"><span><b>تطبيق لاباس</b></span> تجريبي</div>
+            </ons-col>
+            <ons-col class="left">
+
+            </ons-col>
+        </ons-row>
+
+
+
+<!--        <div class="right">-->
+<!--            <ons-toolbar-button icon="fa-close" id="closeButton" onclick="alert('h');"></ons-toolbar-button>-->
+<!--        </div>-->
+    </ons-toolbar>
+
+    <ons-tabbar position="bottom" swipeable position="auto">
+        <ons-tab page="tab1.html" label="الرئيسية" icon="home"   active>
+        </ons-tab>
+        <ons-tab page="tab2.html" label="الإشعارات" icon="bell" active-icon="md-face">
+        </ons-tab>
+        <ons-tab page="tab2.html" label="الإقتراحات والشكاوي" icon="paper-plane" active-icon="bell">
+        </ons-tab>
+    </ons-tabbar>
+
+
+    <template id="tab1.html">
+        <ons-page id="Tab1">
+            <ons-list>
+                <ons-list-header></ons-list-header>
+                <ons-list-item modifier="chevron longdivider"  tappable >
+                    <div class="center">
+                        <ons-icon icon="calendar-plus" class="list-item__icon"></ons-icon>
+                    </div>
+                    <div  class="right">
+                        حجز موعد
+                    </div>
+                </ons-list-item>
+                <ons-list-item modifier="chevron longdivider"  tappable >
+                    <div class="center">
+                        <ons-icon icon="calendar-times" class="list-item__icon"></ons-icon>
+                    </div>
+                    <div  class="right">
+                        إلغاء موعد
+                    </div>
+                </ons-list-item>
+                <ons-list-item modifier="chevron longdivider"  tappable>
+                    <div class="center">
+                        <ons-icon icon="search" class="list-item__icon"></ons-icon>
+                    </div>
+                    <div  class="right">
+                        الإستفسار عن طبيب/ عيادة
+                    </div>
+                </ons-list-item>
+                <ons-list-item modifier="chevron longdivider"  tappable >
+                    <div class="center">
+                        <ons-icon icon="wallet" class="list-item__icon"></ons-icon>
+                    </div>
+                    <div  class="right">
+                        الرصيد
+                    </div>
+                </ons-list-item>
+                <ons-list-item modifier="chevron longdivider"  tappable >
+                    <div class="center">
+                        <ons-icon icon="id-card" class="list-item__icon"></ons-icon>
+                    </div>
+                    <div  class="right">
+                        البيانات الشخصية
+                    </div>
+                </ons-list-item>
+                <ons-list-item modifier="chevron longdivider"  tappable >
+                    <div class="center">
+                        <ons-icon icon="file-medical-alt" class="list-item__icon"></ons-icon>
+                    </div>
+                    <div  class="right">
+                        الملف الطبي
+                    </div>
+                </ons-list-item>
+            </ons-list>
+
+
+        </ons-page>
+    </template>
+
+    <template id="tab2.html">
+        <ons-page id="Tab2">
+            <p style="text-align: center;">
+                This is the second page.
+            </p>
+        </ons-page>
+    </template>
+</ons-page>
+
+

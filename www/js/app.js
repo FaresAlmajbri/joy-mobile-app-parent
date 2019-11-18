@@ -359,7 +359,7 @@ document.addEventListener('init', async function(event) {
 
         infiniteList.delegate = {
             createItemContent: function (i) {
-                return ons.createElement('<ons-list-item tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> المستشفي رقم ' + i + '  </ons-list-item>');
+                return ons.createElement('<ons-list-item id="Select-Speciality-Button" tappable> <div class="right"><ons-icon icon="chevron-right" class="list-item__icon"></ons-icon></div> المستشفي رقم ' + i + '  </ons-list-item>');
             },
             countItems: function () {
                 return 10000;
@@ -368,13 +368,51 @@ document.addEventListener('init', async function(event) {
 
         infiniteList.refresh();
     });
-    }
-
-    if (page.id === 'page2') {
+    // center title
         document.addEventListener('prechange', function(event) {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('label');
         });
+
+    //   list button function
+        page.querySelector('#Select-Speciality-Button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/selectSpeciality.html');
+        }
+    }
+
+    if (page.id === 'selectSpeciality') {
+        //load list items
+        ons.ready(function() {
+            var infiniteList = document.getElementById('selectSpeciality-infinite-list');
+
+            infiniteList.delegate = {
+                createItemContent: function(i) {
+                    return ons.createElement('<ons-list-item tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
+                },
+                countItems: function() {
+                    return 10000;
+                }
+            };
+
+            infiniteList.refresh();
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+
+    }
+
+    if (page.id === 'Tab1') {
+        // document.addEventListener('prechange', function(event) {
+        //     document.querySelector('ons-toolbar .center')
+        //         .innerHTML = event.tabItem.getAttribute('label');
+        // });
+        page.querySelector('#book-appointment-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/selectHospital.html');
+        }
+
     }
 });
 

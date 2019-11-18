@@ -16,8 +16,16 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ @font-face {
+  font-family: Tajawal-Regular;
+  src: url(Tajawal-Regular.ttf);
+}
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+.mainInfo{
+    font-size: large !important;
 }
 
 body {

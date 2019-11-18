@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="41ea9915-1d5a-4d3f-9eb9-8fd396c3b8a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -21,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+            <state relative-caret-position="360">
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -175,13 +174,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PhoneGap/Cordova.Run PhoneGap">
+  <component name="RunManager" selected="PhoneGap/Cordova.Run PhoneGap iOS">
     <configuration name="Run PhoneGap browser" type="PhoneGap" factoryName="PhoneGap/Cordova">
       <option name="myExecutable" value="$USER_HOME$/.npm-global/bin/cordova" />
       <option name="myWorkDir" value="$PROJECT_DIR$" />
       <option name="myCommand" value="serve" />
       <option name="myPassParent" value="true" />
       <option name="myPlatform" value="browser" />
+      <option name="myExtraArgs" value="" />
+      <option name="hasTarget" value="false" />
+      <option name="target" value="" />
+      <method v="2">
+        <option name="PhonegapTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run PhoneGap iOS" type="PhoneGap" factoryName="PhoneGap/Cordova">
+      <option name="myExecutable" value="$USER_HOME$/.npm-global/bin/cordova" />
+      <option name="myWorkDir" value="$PROJECT_DIR$" />
+      <option name="myCommand" value="emulate" />
+      <option name="myPassParent" value="true" />
+      <option name="myPlatform" value="ios" />
       <option name="myExtraArgs" value="" />
       <option name="hasTarget" value="false" />
       <option name="target" value="" />
@@ -204,6 +216,7 @@
     </configuration>
     <list>
       <item itemvalue="PhoneGap/Cordova.Run PhoneGap" />
+      <item itemvalue="PhoneGap/Cordova.Run PhoneGap iOS" />
       <item itemvalue="PhoneGap/Cordova.Run PhoneGap browser" />
     </list>
   </component>
@@ -221,18 +234,18 @@
       <workItem from="1572287531303" duration="91000" />
       <workItem from="1572287636877" duration="2854000" />
       <workItem from="1573557435378" duration="174000" />
-      <workItem from="1574091947583" duration="1196000" />
+      <workItem from="1574091947583" duration="1584000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4349000" />
+    <option name="totallyTimeSpent" value="4737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Project Explorer" order="3" />
@@ -241,7 +254,7 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32876712" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32876712" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -312,8 +325,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+        <state relative-caret-position="360">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
         </state>
       </provider>
     </entry>

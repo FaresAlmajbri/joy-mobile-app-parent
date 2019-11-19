@@ -387,7 +387,7 @@ document.addEventListener('init', async function(event) {
 
             infiniteList.delegate = {
                 createItemContent: function(i) {
-                    return ons.createElement('<ons-list-item tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
+                    return ons.createElement('<ons-list-item id="Select-Doctor-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
                 },
                 countItems: function() {
                     return 10000;
@@ -401,6 +401,41 @@ document.addEventListener('init', async function(event) {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('label');
         });
+
+        //   list button function
+        page.querySelector('#Select-Doctor-Button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/selectDoctor.html');
+        }
+
+    }
+
+    if (page.id === 'selectDoctor') {
+        //load list items
+        ons.ready(function() {
+            var infiniteList = document.getElementById('selectDoctor-infinite-list');
+
+            infiniteList.delegate = {
+                createItemContent: function(i) {
+                    return ons.createElement('<ons-list-item id="Confirm-Appointment-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> الطبيب رقم ' + i + '  </ons-list-item>');
+                },
+                countItems: function() {
+                    return 10000;
+                }
+            };
+
+            infiniteList.refresh();
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+
+    //    confirm appointment button functionality.
+        page.querySelector('#Confirm-Appointment-Button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/confirmAppointment.html');
+        }
+
 
     }
 

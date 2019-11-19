@@ -1,0 +1,58 @@
+<ons-page id="medicalFile">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>الرئيسية</ons-back-button></div>
+        <div class="right" style="margin-right: 10vw"> الملف الطبي</div>
+    </ons-toolbar>
+    <style>
+        textarea{
+            text-align:justify !important; direction:rtl !important;
+        }
+    </style>
+    <div style="position:fixed;top:0;left:0;width:100%; height:100%; ">
+        <div style="width: 90%; height: 90%; margin: 1% auto; position: relative;">
+        </div>
+    </div>
+    <ons-list>
+        <ons-list-header></ons-list-header>
+        <ons-list-item  id="book-appointment-button" modifier="chevron longdivider"  tappable >
+            <div class="center">
+                <ons-icon icon="laptop-medical" class="list-item__icon"></ons-icon>
+            </div>
+            <div   class="right">
+                الجلسات
+            </div>
+        </ons-list-item>
+        <ons-list-item id= "cancel-appointment-button" modifier="chevron longdivider"  tappable >
+            <div class="center">
+                <ons-icon icon="biohazard" class="list-item__icon"></ons-icon>
+            </div>
+            <div  class="right">
+                الامراض المُزمنة
+            </div>
+        </ons-list-item>
+        <ons-list-item modifier="chevron longdivider"  tappable>
+            <div class="center">
+                <ons-icon icon="history" class="list-item__icon"></ons-icon>
+            </div>
+            <div  class="right">
+                التاريخ المرضي
+            </div>
+        </ons-list-item>
+        <ons-list-item modifier="chevron longdivider"  tappable >
+            <div class="center">
+                <ons-icon icon="procedures" class="list-item__icon"></ons-icon>
+            </div>
+            <div  class="right">
+                العمليات
+            </div>
+        </ons-list-item>
+        <ons-list-item modifier="chevron longdivider"  tappable >
+            <div class="center">
+                <ons-icon icon="book-medical" class="list-item__icon"></ons-icon>
+            </div>
+            <div  class="right">
+                المُستندات الطبية
+            </div>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

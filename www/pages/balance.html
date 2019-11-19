@@ -1,0 +1,60 @@
+<ons-page id="balance">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>الرئيسية</ons-back-button></div>
+        <div class="right" style="margin-right: 10vw"> رصيدك</div>
+    </ons-toolbar>
+    <style>
+        ons-input{
+            text-align:justify !important; direction:rtl !important;
+        }
+    </style>
+    <div style="position:fixed;top:0;left:0;width:100%; height:100%; ">
+        <div style="width: 90%; height: 90%; margin: 1% auto; position: relative;">
+        </div>
+    </div>
+
+
+    <div  style="text-align: center; margin-top: 10%; font-family: tajawal">
+        <h2>
+            :رصيدك الحالي هو
+        </h2>
+        <h1>500
+        </h1>
+        <p>
+            دينار ليبي
+        </p>
+        <p>
+
+            <b>لتعبئة الرصيد  إدخال رقم بطاقة الموبي كاش </b>
+        </p>
+        <ons-row>
+            <ons-col width="100%" >
+                <ons-input style="width: 80%" type="number" modifier="underbar" rows="4" placeholder="رقم بطاقة موبي كاش"></ons-input>
+            </ons-col>
+
+
+        </ons-row>
+        <h2>
+            إختر القيمة المراد شحنها
+        </h2>
+        <p>
+            <ons-radio modifier="material " input-id="radio-1" value="50" checked>قيمة 50 دينار</ons-radio>
+        </p>
+        <p>
+            <ons-radio modifier="material "   input-id="radio-2" value="100" >قيمة 100 دينار</ons-radio>
+
+        </p>
+        <p>
+            <ons-radio modifier="material "   input-id="radio-3" value="150">قيمة 150 دينار</ons-radio>
+
+        </p>
+
+
+
+
+        <p style="margin-top: 10%;">
+            <ons-button id="login-button" style="width: 80%; font-weight: bold;"  >إرسال رمز التأكيد</ons-button>
+        </p>
+
+    </div>
+</ons-page>

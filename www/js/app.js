@@ -489,7 +489,15 @@ document.addEventListener('init', async function(event) {
         page.querySelector('#cancel-appointment-button').onclick= async function () {
             document.querySelector('#myNavigator').pushPage('pages/myAppointments.html');
         }
-
+        page.querySelector('#balance-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/balance.html');
+        }
+        page.querySelector('#medical-file-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/medicalFile.html');
+        }
+        page.querySelector('#personal-file-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/personalFile.html');
+        }
     }
 });
 

@@ -1,0 +1,21 @@
+<ons-page id="myAppointments">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>الرئيسية</ons-back-button></div>
+        <div class="right" style="margin-right: 10vw">مواعيدي</div>
+    </ons-toolbar>
+    <ons-row>
+        <ons-col style = "direction: rtl;">
+            <div style="text-align: center; " >
+                <ons-list>
+                    <ons-lazy-repeat id="myAppointments-infinite-list" modifier="longdivider"></ons-lazy-repeat>
+                </ons-list>
+
+                <ons-list>
+                    <ons-list-item modifier="longdivider">Item A</ons-list-item>
+                    <ons-list-item modifier="longdivider">Item B</ons-list-item>
+                </ons-list>
+            </div>
+        </ons-col>
+    </ons-row>
+
+</ons-page>

@@ -318,7 +318,9 @@
 //     }
 //
 // };
-
+async function x1(i){
+    alert('x ' + i)
+}
 document.addEventListener('init', async function(event) {
     let page = event.target;
     // lock Screen Orientation
@@ -439,6 +441,43 @@ document.addEventListener('init', async function(event) {
 
     }
 
+    if (page.id === 'myAppointments') {
+        //load list items
+        ons.ready(function() {
+            var infiniteList = document.getElementById('myAppointments-infinite-list');
+            function z(){
+                alert('z');
+            }
+            infiniteList.delegate = {
+                createItemContent: function(i) {
+                    // return ons.createElement('<ons-list-item onclick="x1('+i+')" id="Cancel-Appointment-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> موعد رقم ' + i + ' مع الطبيب / 12-12-2019  </ons-list-item>');
+                    return ons.createElement('<ons-list-item  id="Cancel-Appointment-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> موعد رقم ' + i + ' مع الطبيب / 12-12-2019  </ons-list-item>');
+                },
+                countItems: function() {
+                    return 10000;
+                }
+            };
+
+            infiniteList.refresh();
+            $('#ons-list-item').onclick= async function (){
+                alert('sdf')
+            }
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+
+        //    confirm appointment button functionality.
+
+        page.querySelector('ons-list-item').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/cancelAppointment.html');
+        }
+
+
+    }
+
     if (page.id === 'Tab1') {
         // document.addEventListener('prechange', function(event) {
         //     document.querySelector('ons-toolbar .center')
@@ -446,6 +485,9 @@ document.addEventListener('init', async function(event) {
         // });
         page.querySelector('#book-appointment-button').onclick= async function () {
             document.querySelector('#myNavigator').pushPage('pages/selectHospital.html');
+        }
+        page.querySelector('#cancel-appointment-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/myAppointments.html');
         }
 
     }

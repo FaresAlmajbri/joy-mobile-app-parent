@@ -454,7 +454,7 @@ document.addEventListener('init', async function(event) {
                     return ons.createElement('<ons-list-item  id="Cancel-Appointment-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> موعد رقم ' + i + ' مع الطبيب / 12-12-2019  </ons-list-item>');
                 },
                 countItems: function() {
-                    return 10000;
+                    return 100;
                 }
             };
 
@@ -478,6 +478,36 @@ document.addEventListener('init', async function(event) {
 
     }
 
+    if (page.id === 'sessions') {
+        //load list items
+        ons.ready(function() {
+            var infiniteList = document.getElementById('sessions-infinite-list');
+
+            infiniteList.delegate = {
+                createItemContent: function(i) {
+                    return ons.createElement('<ons-list-item  expandable><div class="center"><span>10/10/2019</span></div><div class="center"><span class="list-item__title">10/10/2019</span><div class="list-item__subtitle"><span>الامراض الجلدية</span></div> </div><div class="expandable-content"><span>الطبيب: د.عبدالباسط الغرياني</span><br><span>التخصص: أمراض جلدية</span><br><span>التوقيت: 08:30</span><br><span><ons-button id="showSessionInfoButton" modifier="large--quiet">عرض التفاصيل</ons-button></span></div></ons-list-item>')
+                    // return ons.createElement('<ons-list-item id="Select-Doctor-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
+                },
+                countItems: function() {
+                    return 30;
+                }
+            };
+
+            infiniteList.refresh();
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+
+        //   list button function
+        page.querySelector('#showSessionInfoButton').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/sessionInfo.html');
+        }
+
+    }
+
     if (page.id === 'Tab1') {
         // document.addEventListener('prechange', function(event) {
         //     document.querySelector('ons-toolbar .center')
@@ -498,6 +528,28 @@ document.addEventListener('init', async function(event) {
         page.querySelector('#personal-file-button').onclick= async function () {
             document.querySelector('#myNavigator').pushPage('pages/personalFile.html');
         }
+    }
+
+    if (page.id === 'medicalFile') {
+        // document.addEventListener('prechange', function(event) {
+        //     document.querySelector('ons-toolbar .center')
+        //         .innerHTML = event.tabItem.getAttribute('label');
+        // });
+        page.querySelector('#sessions-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/sessions.html');
+        }
+        // page.querySelector('#cancel-appointment-button').onclick= async function () {
+        //     document.querySelector('#myNavigator').pushPage('pages/myAppointments.html');
+        // }
+        // page.querySelector('#balance-button').onclick= async function () {
+        //     document.querySelector('#myNavigator').pushPage('pages/balance.html');
+        // }
+        // page.querySelector('#medical-file-button').onclick= async function () {
+        //     document.querySelector('#myNavigator').pushPage('pages/medicalFile.html');
+        // }
+        // page.querySelector('#personal-file-button').onclick= async function () {
+        //     document.querySelector('#myNavigator').pushPage('pages/personalFile.html');
+        // }
     }
 });
 

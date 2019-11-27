@@ -538,9 +538,9 @@ document.addEventListener('init', async function(event) {
         page.querySelector('#sessions-button').onclick= async function () {
             document.querySelector('#myNavigator').pushPage('pages/sessions.html');
         }
-        // page.querySelector('#cancel-appointment-button').onclick= async function () {
-        //     document.querySelector('#myNavigator').pushPage('pages/myAppointments.html');
-        // }
+        page.querySelector('#diseases-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/diseases.html');
+        }
         // page.querySelector('#balance-button').onclick= async function () {
         //     document.querySelector('#myNavigator').pushPage('pages/balance.html');
         // }
@@ -550,6 +550,40 @@ document.addEventListener('init', async function(event) {
         // page.querySelector('#personal-file-button').onclick= async function () {
         //     document.querySelector('#myNavigator').pushPage('pages/personalFile.html');
         // }
+    }
+
+    if (page.id === 'diseases') {
+        //load list items
+        ons.ready(function() {
+            var infiniteList = document.getElementById('diseases-infinite-list');
+            infiniteList.delegate = {
+                createItemContent: function(i) {
+                    // return ons.createElement('<ons-list-item onclick="x1('+i+')" id="Cancel-Appointment-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> موعد رقم ' + i + ' مع الطبيب / 12-12-2019  </ons-list-item>');
+                    return ons.createElement('<ons-list-item >  إلتهاب الجيوب الانفية </ons-list-item>');
+                },
+                countItems: function() {
+                    return 100;
+                }
+            };
+
+            infiniteList.refresh();
+            $('#ons-list-item').onclick= async function (){
+                alert('sdf')
+            }
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+
+        //    confirm appointment button functionality.
+
+        page.querySelector('ons-list-item').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/cancelAppointment.html');
+        }
+
+
     }
 });
 

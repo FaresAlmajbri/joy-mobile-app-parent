@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41ea9915-1d5a-4d3f-9eb9-8fd396c3b8a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/medicalFile.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/medicalFile.html" afterDir="false" />
     </list>
@@ -55,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/pages/diseases.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+            <state relative-caret-position="-55">
+              <caret column="22" selection-start-column="14" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#ons-page#0;n#!!top" expanded="true" />
@@ -70,18 +67,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="487" column="452" selection-start-line="487" selection-start-column="452" selection-end-line="487" selection-end-column="452" />
+            <state relative-caret-position="183">
+              <caret line="561" column="63" selection-start-line="561" selection-start-column="63" selection-end-line="561" selection-end-column="63" />
               <folding>
                 <element signature="e#14280#14864#0" />
                 <element signature="e#14954#15089#0" />
                 <element signature="e#15206#15305#0" />
                 <element signature="e#16511#18092#0" />
+                <element signature="e#18126#19713#0" />
                 <element signature="e#19743#20857#0" />
-                <element signature="e#20894#22030#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/pages/medicalFile.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,11 +152,11 @@
         <option value="$PROJECT_DIR$/www/pages/balance.html" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/config.xml" />
-        <option value="$PROJECT_DIR$/www/pages/medicalFile.html" />
         <option value="$PROJECT_DIR$/www/pages/sessions.html" />
         <option value="$PROJECT_DIR$/www/pages/sessionInfo.html" />
-        <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/pages/diseases.html" />
+        <option value="$PROJECT_DIR$/www/pages/medicalFile.html" />
+        <option value="$PROJECT_DIR$/www/js/app.js" />
       </list>
     </option>
   </component>
@@ -282,18 +293,18 @@
       <workItem from="1574091947583" duration="22314000" />
       <workItem from="1574534285978" duration="30000" />
       <workItem from="1574534344079" duration="2274000" />
-      <workItem from="1574765703255" duration="1560000" />
+      <workItem from="1574765703255" duration="3440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29331000" />
+    <option name="totallyTimeSpent" value="31211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="54" width="1280" height="689" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27786753" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27786753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Project Explorer" order="3" />
@@ -301,7 +312,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32663316" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32663316" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -533,18 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/medicalFile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -567,36 +566,6 @@
             <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ons-col#0;n#ons-row#0;n#ons-page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#ons-col#0;n#ons-row#0;n#ons-page#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/sessionInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#ons-page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#ons-col#0;n#ons-row#0;n#div#1;n#ons-page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#ons-col#0;n#ons-row#1;n#div#1;n#ons-page#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="487" column="452" selection-start-line="487" selection-start-column="452" selection-end-line="487" selection-end-column="452" />
-          <folding>
-            <element signature="e#14280#14864#0" />
-            <element signature="e#14954#15089#0" />
-            <element signature="e#15206#15305#0" />
-            <element signature="e#16511#18092#0" />
-            <element signature="e#19743#20857#0" />
-            <element signature="e#20894#22030#0" />
           </folding>
         </state>
       </provider>
@@ -627,15 +596,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/sessionInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#ons-col#0;n#ons-row#0;n#div#1;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#ons-col#0;n#ons-row#1;n#div#1;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/medicalFile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/diseases.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+        <state relative-caret-position="-55">
+          <caret column="22" selection-start-column="14" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#1;n#ons-toolbar#0;n#ons-page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#ons-page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ons-col#0;n#ons-row#0;n#ons-page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#ons-col#0;n#ons-row#0;n#ons-page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="561" column="63" selection-start-line="561" selection-start-column="63" selection-end-line="561" selection-end-column="63" />
+          <folding>
+            <element signature="e#14280#14864#0" />
+            <element signature="e#14954#15089#0" />
+            <element signature="e#15206#15305#0" />
+            <element signature="e#16511#18092#0" />
+            <element signature="e#18126#19713#0" />
+            <element signature="e#19743#20857#0" />
           </folding>
         </state>
       </provider>

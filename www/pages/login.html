@@ -1,5 +1,13 @@
 
 <ons-page id="login">
+    <style>
+        .title{
+            text-align:justify !important; direction:rtl !important;
+        }
+        .text-input{
+            text-align:center !important; direction:rtl !important;
+        }
+    </style>
     <div style="position:fixed;top:0;left:0;width:100%; height:100%; ">
         <div style="width: 90%; height: 90%; margin: 10% auto; position: relative;">
 
@@ -13,11 +21,11 @@
 
     <div  style="text-align: center; margin-top: 30px; font-family: tajawal">
         <p>
-            <ons-input  style="width: 80%"   id="username" modifier="underbar" placeholder="أسم المستخدم" float value="0926274427"></ons-input>
+            <ons-input id="usernameInput" style="width: 80%;text-align: center"   id="username" modifier="underbar" placeholder="أسم المستخدم" float value="0926274427"></ons-input>
         </p>
         <br>
         <p>
-            <ons-input  style="width: 80%" id="password" modifier="underbar" type="password" placeholder="كلمة المرور" float value="123123"></ons-input>
+            <ons-input  id="passwordInput" style="width: 80%" id="password" modifier="underbar" type="password" placeholder="كلمة المرور" float value="123123"></ons-input>
         </p>
         <p style="margin-top: 10%;">
             <ons-button id="login-button" style="width: 50%; font-weight: bold;"  >تسجيل دخول</ons-button>
@@ -61,4 +69,14 @@
         </div>
     </ons-modal>
     <!--End of Login trail Modal-->
+    <ons-toast id="loginLoadingToast" animation="ascend">
+        <div class="title">
+            تسجيل دخول...
+        </div>
+    </ons-toast>
+    <ons-toast id="loginErrorToast" animation="ascend">
+        <div class="title">
+            الرجاء التأكد من رقم الهاتف او كلمة المرور.
+        </div>
+    </ons-toast>
 </ons-page>

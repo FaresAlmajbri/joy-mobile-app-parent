@@ -321,6 +321,53 @@
 async function x1(i){
     alert('x ' + i)
 }
+async function login(mobileNo,password){
+    let requestUrl="http://46.101.133.122//user/login?phone="+mobileNo+"&password="+password;
+    // let requestUrl="http://46.101.133.122//user/login?phone=0927099916&password=test123121";
+    let settings = {
+        "url": requestUrl,
+        "method": "POST",
+        "timeout": 0,
+    };
+
+ await   $.ajax(settings).done(function (response) {
+     // variable to store response result
+     res = null;
+       if (response.status==="success"){
+           localStorage.token = response.data.token;
+           localStorage.userDetails = response.data;
+            res =true;
+       }else {
+           localStorage.token=null;
+           res =false;
+       }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+}
+async function getUserInfo(){
+    // localStorage.token = localStorage.token
+    localStorage.token = "IQdESBRf3s67PHFlc1wCpcOnQOaINjTJKloXXduPqlzHVaGi46"
+    let settings = {
+  "url": "http://46.101.133.122//user/info?token="& localStorage.token,
+  "method": "GET",
+  "timeout": 0,
+};
+
+await $.ajax(settings).done(function (response) {
+  console.log(response);
+});
+}
+async function hasToken(){
+    if (localStorage.token) {
+        // localStorage.token = localStorage.token;
+        return localStorage.token
+    } else {
+        alert("NO TOKEN");
+        return false
+    }
+}
 document.addEventListener('init', async function(event) {
     let page = event.target;
     // lock Screen Orientation
@@ -330,21 +377,37 @@ document.addEventListener('init', async function(event) {
         console.log('line 326 app.js');
     });
     if (page.id === 'login') {
-
+        page.onload = hasToken();
         page.querySelector('#login-button').onclick = async function () {
             //consume api
             try {
+                document.querySelector('#loginLoadingToast').toggle();
+                let username = document.querySelector('#usernameInput').value;
+                let password = document.querySelector('#passwordInput').value;
+                if ( await login(username, password)==true) {
+                    document.querySelector('#loginLoadingToast').hide();
 
-                // var myNavigator = document.getElementById('myNavigator');
-                // myNavigator.pushPage('pages/home.html');
-                // alert('hello')
-                // x = await login();
-                // alert( x);
-                // alert('hi');
-                document.querySelector('#myNavigator').pushPage('pages/homex.html');
-                // document.querySelector('#myNavigator').pushPage('pages/home.html', {data: {title: 'Home'}});
+                    document.querySelector('#myNavigator').pushPage('pages/homex.html');
+               }else{
+                    let options ={
+                        message:"nabil",
+                        timeout: 60000,
+                        class:"title",
+                        messageHTML:"<div>pla pla</div>",
+                    }
+                    ons.notification.toast( options);
+                    document.querySelector('#loginLoadingToast').hide();
+                    document.querySelector('#usernameInput').value="";
+                    document.querySelector('#passwordInput').value="";
+               }
+
             } catch (e) {
-                alert(JSON.stringify(e))
+                let options ={
+                    timeout: 2000,
+                    class:"title",
+                    messageHTML:"<div>pla pla</div>",
+                }
+                ons.notification.toast('Toast!', options);
             }
             // document.querySelector('#myNavigator').pushPage('main.html', {data: {title: 'Page 2'}});
         };
@@ -508,6 +571,36 @@ document.addEventListener('init', async function(event) {
 
     }
 
+    if (page.id === 'myOperations') {
+        //load list items
+        ons.ready(function() {
+            var infiniteList = document.getElementById('myOperations-infinite-list');
+
+            infiniteList.delegate = {
+                createItemContent: function(i) {
+                    return ons.createElement('<ons-list-item  expandable><div class="center"><span>عملية إزالة مرارة</span></div><div class="center"><span class="list-item__title">عملية إزالة مرارة</span><div class="list-item__subtitle"><span>11/12/2019</span></div> </div><div class="expandable-content"><span>الطبيب: د.عبدالباسط الغرياني</span><br><span>التخصص: أمراض جلدية</span><br><span>العملية: إزالة الزايدة الدودية</span></div></ons-list-item>')
+                    // return ons.createElement('<ons-list-item id="Select-Doctor-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
+                },
+                countItems: function() {
+                    return 30;
+                }
+            };
+
+            infiniteList.refresh();
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+
+        //   list button function
+        page.querySelector('#showSessionInfoButton').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/sessionInfo.html');
+        }
+
+    }
+
     if (page.id === 'Tab1') {
         // document.addEventListener('prechange', function(event) {
         //     document.querySelector('ons-toolbar .center')
@@ -540,6 +633,15 @@ document.addEventListener('init', async function(event) {
         }
         page.querySelector('#diseases-button').onclick= async function () {
             document.querySelector('#myNavigator').pushPage('pages/diseases.html');
+        }
+        page.querySelector('#medicalHistory-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/medicalHistory.html');
+        }
+        page.querySelector('#myOperations-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/myOperations.html');
+        }
+        page.querySelector('#medicalDocuments-button').onclick= async function () {
+            document.querySelector('#myNavigator').pushPage('pages/medicalDocuments.html');
         }
         // page.querySelector('#balance-button').onclick= async function () {
         //     document.querySelector('#myNavigator').pushPage('pages/balance.html');

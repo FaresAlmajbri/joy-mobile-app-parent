@@ -322,7 +322,7 @@ async function x1(i){
     alert('x ' + i)
 }
 async function login(mobileNo,password){
-    let requestUrl="http://46.101.133.122//user/login?phone="+mobileNo+"&password="+password;
+    let requestUrl="http://api.labas.ly//user/login?phone="+mobileNo+"&password="+password;
     // let requestUrl="http://46.101.133.122//user/login?phone=0927099916&password=test123121";
     let settings = {
         "url": requestUrl,
@@ -350,7 +350,7 @@ async function getUserInfo(){
     // localStorage.token = localStorage.token
     localStorage.token = "IQdESBRf3s67PHFlc1wCpcOnQOaINjTJKloXXduPqlzHVaGi46"
     let settings = {
-  "url": "http://46.101.133.122//user/info?token="& localStorage.token,
+  "url": "http://api.labas.ly//user/info?token="& localStorage.token,
   "method": "GET",
   "timeout": 0,
 };
@@ -367,6 +367,80 @@ async function hasToken(){
         alert("NO TOKEN");
         return false
     }
+}
+async function getAllClinics(page){
+    let requestUrl="http://api.labas.ly//clinics?token="+localStorage.token;
+    // let requestUrl="http://46.101.133.122//user/login?phone=0927099916&password=test123121";
+    let settings = {
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.clinics.data;
+        }else {
+            localStorage.token=null;
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+}
+async function getSpeciality(clinicId){
+    let requestUrl="http://api.labas.ly/clinics/"+clinicId+"/specialties?token="+localStorage.token;
+    // let requestUrl="http://46.101.133.122//user/login?phone=0927099916&password=test123121";
+    let settings = {
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.specialties;
+        }else {
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+}
+async function getSpecialityDoctors(specialtyId,clinicId){
+    let requestUrl="http://api.labas.ly/clinics/"+clinicId+"/specialties/"+specialtyId+"/doctors?token="+localStorage.token;
+    let settings = {
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.doctors;
+        }else {
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+}
+async function showSelectSpecialityPage(clinicId){
+        document.querySelector('#myNavigator').pushPage('pages/selectSpeciality.html',{data: {clinic: clinicId}});
+}
+async function showSelectDoctorPage(specialtyId,clinicId){
+    console.log(' showSelectDoctorPage request got here!');
+    console.log(specialtyId)
+    // alert(clinicId)
+    document.querySelector('#myNavigator').pushPage('pages/selectDoctor.html',{data: {specialty: specialtyId,clinic: clinicId}});
 }
 document.addEventListener('init', async function(event) {
     let page = event.target;
@@ -419,17 +493,27 @@ document.addEventListener('init', async function(event) {
 
 
     if (page.id === 'page2') {
-    ons.ready(function () {
-        var infiniteList = document.getElementById('infinite-list');
+    ons.ready(async function() {
+        var modal = page.querySelector('#loadHospitalModal');
+        modal.show();
 
+        var infiniteList = document.getElementById('infinite-list');
+        clinics= await getAllClinics(0);
         infiniteList.delegate = {
             createItemContent: function (i) {
-                return ons.createElement('<ons-list-item id="Select-Speciality-Button" tappable> <div class="right"><ons-icon icon="chevron-right" class="list-item__icon"></ons-icon></div> المستشفي رقم ' + i + '  </ons-list-item>');
+                let x = clinics[i].id
+                return ons.createElement('<ons-list-item  onclick=showSelectSpecialityPage('+clinics[i].id+') tappable> ' +
+                                                    '<div class="right">' +
+                                                        '   <ons-icon icon="chevron-right" class="list-item__icon"></ons-icon><' +
+                                                    '/div>' + clinics[i].name +
+                                                '</ons-list-item>');
             },
             countItems: function () {
-                return 10000;
+                return clinics.length;
             }
         };
+        modal.hide();
+
 
         infiniteList.refresh();
     });
@@ -438,27 +522,27 @@ document.addEventListener('init', async function(event) {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('label');
         });
-
-    //   list button function
-        page.querySelector('#Select-Speciality-Button').onclick= async function () {
-            document.querySelector('#myNavigator').pushPage('pages/selectSpeciality.html');
-        }
     }
 
     if (page.id === 'selectSpeciality') {
         //load list items
-        ons.ready(function() {
+        ons.ready(async function() {
+            var modal = page.querySelector('#loadSpecialityModal');
+            modal.show();
             var infiniteList = document.getElementById('selectSpeciality-infinite-list');
 
+            let specialties = await getSpeciality(page.data.clinic);
+            console.log(specialties);
+            console.log(page.data.clinic);
             infiniteList.delegate = {
                 createItemContent: function(i) {
-                    return ons.createElement('<ons-list-item id="Select-Doctor-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
+                    return ons.createElement('<ons-list-item id="Select-Doctor-Button" tappable onclick="showSelectDoctorPage('+specialties[i].id+','+page.data.clinic+')"> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div>' + specialties[i].name_ar + '  </ons-list-item>');
                 },
                 countItems: function() {
-                    return 10000;
+                    return specialties.length;
                 }
             };
-
+            modal.hide();
             infiniteList.refresh();
         });
         // center title
@@ -466,28 +550,26 @@ document.addEventListener('init', async function(event) {
             document.querySelector('ons-toolbar .center')
                 .innerHTML = event.tabItem.getAttribute('label');
         });
-
-        //   list button function
-        page.querySelector('#Select-Doctor-Button').onclick= async function () {
-            document.querySelector('#myNavigator').pushPage('pages/selectDoctor.html');
-        }
-
     }
 
     if (page.id === 'selectDoctor') {
         //load list items
-        ons.ready(function() {
+        ons.ready(async function() {
+            var modal = page.querySelector('#loadSpecialityDoctorsModal');
+            modal.show();
             var infiniteList = document.getElementById('selectDoctor-infinite-list');
-
+            console.log('selectDoctor page / request got here!');
+            console.log(page.data.specialty);
+            let doctors = await getSpecialityDoctors(page.data.specialty,page.data.clinic);
             infiniteList.delegate = {
                 createItemContent: function(i) {
-                    return ons.createElement('<ons-list-item id="Confirm-Appointment-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> الطبيب رقم ' + i + '  </ons-list-item>');
+                    return ons.createElement('<ons-list-item id="Confirm-Appointment-Button" onclick="alert(123)" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div>' + doctors[i].name + '  </ons-list-item>');
                 },
                 countItems: function() {
-                    return 10000;
+                    return doctors.length;
                 }
             };
-
+            modal.hide();
             infiniteList.refresh();
         });
         // center title
@@ -497,9 +579,9 @@ document.addEventListener('init', async function(event) {
         });
 
     //    confirm appointment button functionality.
-        page.querySelector('#Confirm-Appointment-Button').onclick= async function () {
-            document.querySelector('#myNavigator').pushPage('pages/confirmAppointment.html');
-        }
+    //     page.querySelector('#Confirm-Appointment-Button').onclick= async function () {
+    //         document.querySelector('#myNavigator').pushPage('pages/confirmAppointment.html');
+    //     }
 
 
     }

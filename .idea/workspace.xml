@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="41ea9915-1d5a-4d3f-9eb9-8fd396c3b8a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/medicalFile.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/medicalFile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/selectDoctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/selectDoctor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/selectHospital.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/selectHospital.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/selectSpeciality.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/selectSpeciality.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +140,9 @@
       <workItem from="1577110197050" duration="535000" />
       <workItem from="1577633528801" duration="738000" />
       <workItem from="1577634298876" duration="9230000" />
-      <workItem from="1578092949465" duration="369000" />
+      <workItem from="1578092949465" duration="4788000" />
+      <workItem from="1578845936654" duration="8201000" />
+      <workItem from="1579108304103" duration="1653000" />
     </task>
     <servers />
   </component>
@@ -146,35 +150,39 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578093883511">
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578933121907">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1366.0.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1577633968875" />
-    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1578093883511" />
+    <state x="104" y="62" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1578933121907" />
     <state x="328" y="114" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577634036480">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="328" y="114" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1366.0.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1577634036480" />
     <state x="328" y="125" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1366.54.1366.746/0.22.1280.721@0.22.1280.721" timestamp="1577110081932" />
-    <state width="1238" height="209" key="GridCell.Tab.0.bottom" timestamp="1578093884992">
+    <state width="1238" height="209" key="GridCell.Tab.0.bottom" timestamp="1579033960174">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1238" height="209" key="GridCell.Tab.0.bottom/-1366.0.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1577646039158" />
-    <state width="1238" height="209" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1578093884992" />
-    <state width="1238" height="209" key="GridCell.Tab.0.center" timestamp="1578093884990">
+    <state width="1238" height="209" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1578940428365" />
+    <state width="1238" height="209" key="GridCell.Tab.0.bottom/1280.32.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1579033960174" />
+    <state width="1238" height="209" key="GridCell.Tab.0.center" timestamp="1579033960170">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1238" height="209" key="GridCell.Tab.0.center/-1366.0.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1577646039155" />
-    <state width="1238" height="209" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1578093884990" />
-    <state width="1238" height="209" key="GridCell.Tab.0.left" timestamp="1578093884989">
+    <state width="1238" height="209" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1578940428363" />
+    <state width="1238" height="209" key="GridCell.Tab.0.center/1280.32.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1579033960170" />
+    <state width="1238" height="209" key="GridCell.Tab.0.left" timestamp="1579033960027">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1238" height="209" key="GridCell.Tab.0.left/-1366.0.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1577646039153" />
-    <state width="1238" height="209" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1578093884989" />
-    <state width="1238" height="209" key="GridCell.Tab.0.right" timestamp="1578093884991">
+    <state width="1238" height="209" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1578940428361" />
+    <state width="1238" height="209" key="GridCell.Tab.0.left/1280.32.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1579033960027" />
+    <state width="1238" height="209" key="GridCell.Tab.0.right" timestamp="1579033960172">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1238" height="209" key="GridCell.Tab.0.right/-1366.0.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1577646039156" />
-    <state width="1238" height="209" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1578093884991" />
+    <state width="1238" height="209" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1578940428363" />
+    <state width="1238" height="209" key="GridCell.Tab.0.right/1280.32.1366.768/0.0.1280.800@0.0.1280.800" timestamp="1579033960172" />
   </component>
 </project>

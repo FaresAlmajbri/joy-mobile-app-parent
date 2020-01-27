@@ -32,7 +32,7 @@
 
         <ons-row style="padding-top:5%">
             <ons-col width="100%" vertical-align="center">
-                <ons-input  style="width: 70%" type="number"  id="fullName" modifier="underbar" placeholder="رقم الهاتف" float value=""></ons-input>
+                <ons-input  style="width: 70%" type="number"  id="phone" modifier="underbar" placeholder="رقم الهاتف" float value=""></ons-input>
                 <ons-icon
                         icon="fa-mobile-alt"
                         size="100%"
@@ -43,7 +43,7 @@
         </ons-row>
         <ons-row style="padding-top:5%">
             <ons-col width="100%" vertical-align="center">
-                <ons-input  style="width: 70%" type="date"  id="fullName" modifier="underbar" placeholder="تاريخ الميلاد" float value=""></ons-input>
+                <ons-input  style="width: 70%" type="date"  id="dob" modifier="underbar" placeholder="تاريخ الميلاد" float value=""></ons-input>
                 <ons-icon
                         icon="fa-calendar-day"
                         size="100%"
@@ -55,7 +55,7 @@
 
         <ons-row style="padding-top:5%">
             <ons-col width="100%">
-                <ons-input  style="width: 70%" type="email"   id="fullName" modifier="underbar" placeholder="البريد الإلكتروني" float value=""></ons-input>
+                <ons-input  style="width: 70%" type="email"   id="email" modifier="underbar" placeholder="البريد الإلكتروني" float value=""></ons-input>
                 <ons-icon
                         icon="fa-at"
                         size="100%"
@@ -67,7 +67,7 @@
 
         <ons-row style="padding-top:5%">
             <ons-col width="100%">
-                <ons-input  style="width: 70%" type="password"   id="fullName" modifier="underbar" placeholder="كلمة المرور" float value=""></ons-input>
+                <ons-input  style="width: 70%" type="password"   id="password" modifier="underbar" placeholder="كلمة المرور" float disabled value=""></ons-input>
                 <ons-icon
                         icon="fa-key"
                         size="100%"
@@ -78,7 +78,7 @@
         </ons-row>
         <ons-row style="padding-top:5%">
             <ons-col width="100%">
-                <ons-input  style="width: 70%" type="password"   id="fullName" modifier="underbar" placeholder="تاكيد كلمة المرور" float value=""></ons-input>
+                <ons-input  style="width: 70%" type="password"   id="passwordConfirmation" modifier="underbar" placeholder="تاكيد كلمة المرور" float disabled value=""></ons-input>
                 <ons-icon
                         icon="fa-key"
                         size="100%"
@@ -93,7 +93,7 @@
 
 
         <p style="margin-top: 10%;">
-            <ons-button id="login-button" style="width: 80%; font-weight: bold;"  >حفظ  </ons-button>
+            <ons-button id="login-button" style="width: 80%; font-weight: bold; " disabled  >حفظ  </ons-button>
         </p>
 
     </div>
@@ -102,4 +102,12 @@
 
 
     </div>
+
+    <ons-modal id="loadPersonalFileModal" direction="up">
+        <div style="text-align: center">
+            <p>
+                <ons-icon icon="md-spinner" size="28px" spin></ons-icon> جاري التحميل
+            </p>
+        </div>
+    </ons-modal>
 </ons-page>

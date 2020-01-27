@@ -323,7 +323,6 @@ async function x1(i){
 }
 async function login(mobileNo,password){
     let requestUrl="http://api.labas.ly//user/login?phone="+mobileNo+"&password="+password;
-    // let requestUrl="http://46.101.133.122//user/login?phone=0927099916&password=test123121";
     let settings = {
         "url": requestUrl,
         "method": "POST",
@@ -346,26 +345,46 @@ async function login(mobileNo,password){
     });
     return res;
 }
+async function logout(){
+    try {
+        localStorage.token = null;
+        localStorage.userDetails = null;
+        return true;
+    }catch (e) {
+        return false
+    }
+}
 async function getUserInfo(){
-    // localStorage.token = localStorage.token
-    localStorage.token = "IQdESBRf3s67PHFlc1wCpcOnQOaINjTJKloXXduPqlzHVaGi46"
+    let requestUrl="http://api.labas.ly/user/info?token="+localStorage.token;
     let settings = {
-  "url": "http://api.labas.ly//user/info?token="& localStorage.token,
-  "method": "GET",
-  "timeout": 0,
-};
-
-await $.ajax(settings).done(function (response) {
-  console.log(response);
-});
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.info;
+        }else {
+            localStorage.token=null;
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
 }
 async function hasToken(){
-    if (localStorage.token) {
-        // localStorage.token = localStorage.token;
-        return localStorage.token
-    } else {
-        alert("NO TOKEN");
-        return false
+    localStorage.token=null;
+    // alert(localStorage.token)
+    // if (localStorage.token==null) {
+    //     // localStorage.token = localStorage.token;
+    //     return false
+    // }
+    if (!localStorage.token){
+        alert("no token")
+        return "false"
     }
 }
 async function getAllClinics(page){
@@ -433,23 +452,120 @@ async function getSpecialityDoctors(specialtyId,clinicId){
     });
     return res;
 }
+async function getDoctorRoutes(clinicId,doctorId){
+    console.log('getDoctorRoutes clinic: '+ clinicId);
+    console.log(' getDoctorRoutes doctor: '+ doctorId);
+    let requestUrl="http://api.labas.ly/clinics/"+clinicId+"/doctors/"+doctorId+"/routes?token="+localStorage.token;
+    let settings = {
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.routes;
+        }else {
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+}
 async function showSelectSpecialityPage(clinicId){
         document.querySelector('#myNavigator').pushPage('pages/selectSpeciality.html',{data: {clinic: clinicId}});
 }
 async function showSelectDoctorPage(specialtyId,clinicId){
-    console.log(' showSelectDoctorPage request got here!');
-    console.log(specialtyId)
-    // alert(clinicId)
     document.querySelector('#myNavigator').pushPage('pages/selectDoctor.html',{data: {specialty: specialtyId,clinic: clinicId}});
 }
+async function showSelectRoutePage(clinicId,specialtyId,doctorId)  {
+           document.querySelector('#myNavigator').pushPage('pages/selectRoutes.html',{data: {specialty: specialtyId,clinic:clinicId , doctor:doctorId}});
+}
+async  function getCustomerBalance(){
+    let requestUrl="http://api.labas.ly/user/balance?token="+localStorage.token;
+    let settings = {
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.balance;
+        }else {
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+}
+async function balanceTopup(pinCode){
+    let requestUrl="http://api.labas.ly/user/balance/topup?token="+localStorage.token+"&vocher="+pinCode;
+    let settings = {
+        "url": requestUrl,
+        "method": "POST",
+        "timeout": 0,
+    };
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response;
+        }else {
+            res =response;
+        }
+    }).catch(function (e) {
+        res= e
+    });
+    return res;
+}
+async function showTopupPopover(respones){
+
+}
+
+
+
 document.addEventListener('init', async function(event) {
+
     let page = event.target;
     // lock Screen Orientation
     // window.screen.orientation.lock('portrait');
     screen.orientation.lock('portrait').catch(function(error) {
         // whatever
-        console.log('line 326 app.js');
     });
+    document.addEventListener("backbutton", onBackKeyPress, false);
+    function onBackKeyPress() {
+        /* If the current page is the login page, disable the button completely (aka do nothing) */
+        if ($.mobile.activePage.attr('id') == 'login') {
+        }
+
+        /* Else, execute log off code */
+        else {
+            if (confirm("Are you sure you want to logout?")) {
+                /* Here is where my AJAX code for logging off goes */
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+
+    if (page.id === 'homex.html') {
+        // let tokenStatus = await hasToken();
+// alert(localStorage.token)
+        if (!localStorage.token){
+            alert("you need to login")
+        }else {
+            alert("you are free to go, token: " + tokenStatus)
+        }
+    }
+
     if (page.id === 'login') {
         page.onload = hasToken();
         page.querySelector('#login-button').onclick = async function () {
@@ -485,12 +601,10 @@ document.addEventListener('init', async function(event) {
             }
             // document.querySelector('#myNavigator').pushPage('main.html', {data: {title: 'Page 2'}});
         };
-
         page.querySelector('#register-button').onclick= async function () {
             document.querySelector('#myNavigator').pushPage('pages/register.html');
         }
     }
-
 
     if (page.id === 'page2') {
     ons.ready(async function() {
@@ -563,7 +677,7 @@ document.addEventListener('init', async function(event) {
             let doctors = await getSpecialityDoctors(page.data.specialty,page.data.clinic);
             infiniteList.delegate = {
                 createItemContent: function(i) {
-                    return ons.createElement('<ons-list-item id="Confirm-Appointment-Button" onclick="alert(123)" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div>' + doctors[i].name + '  </ons-list-item>');
+                    return ons.createElement('<ons-list-item id="Confirm-Appointment-Button" onclick="showSelectRoutePage('+page.data.clinic+','+page.data.specialty+','+ doctors[i].id+')" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div>' + doctors[i].name + '  </ons-list-item>');
                 },
                 countItems: function() {
                     return doctors.length;
@@ -582,6 +696,42 @@ document.addEventListener('init', async function(event) {
     //     page.querySelector('#Confirm-Appointment-Button').onclick= async function () {
     //         document.querySelector('#myNavigator').pushPage('pages/confirmAppointment.html');
     //     }
+
+
+    }
+
+    if (page.id === 'selectRoute') {
+        //load list items
+        ons.ready(async function() {
+            var modal = page.querySelector('#loadRoutesModal');
+            modal.show();
+            var infiniteList = document.getElementById('selectRoutes-infinite-list');
+
+            console.log('clinic: '+page.data.clinic);
+            console.log('doctor: '+ page.data.doctor);
+            let Routes = await getDoctorRoutes(page.data.clinic,page.data.doctor);
+            console.log(Routes)
+            infiniteList.delegate = {
+                createItemContent: function(i) {
+                    return ons.createElement('<ons-list-item id="Confirm-Appointment-Button" onclick="alert(123)" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div>' + Routes[i].week_day +' - '+ Routes[i].time_from +'  </ons-list-item>');
+                },
+                countItems: function() {
+                    return Routes.length;
+                }
+            };
+            modal.hide();
+            infiniteList.refresh();
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+
+        //    confirm appointment button functionality.
+        //     page.querySelector('#Confirm-Appointment-Button').onclick= async function () {
+        //         document.querySelector('#myNavigator').pushPage('pages/confirmAppointment.html');
+        //     }
 
 
     }
@@ -703,6 +853,13 @@ document.addEventListener('init', async function(event) {
         page.querySelector('#personal-file-button').onclick= async function () {
             document.querySelector('#myNavigator').pushPage('pages/personalFile.html');
         }
+        page.querySelector('#sign-out-button').onclick= async function () {
+            var logoutStatus = await logout();
+            if (logoutStatus===ture){
+
+            }
+            document.querySelector('#myNavigator').pushPage('pages/personalFile.html');
+        }
     }
 
     if (page.id === 'medicalFile') {
@@ -769,6 +926,81 @@ document.addEventListener('init', async function(event) {
 
 
     }
+    if (page.id === 'balance') {
+        //load list items
+        ons.ready(async function() {
+            let modal = page.querySelector('#loadBalanceModal');
+            modal.show();
+            let balance=await  getCustomerBalance();
+            let balanceLabel = document.getElementById('balanceLabel');
+            balanceLabel.innerText=balance;
+            modal.hide();
+            page.querySelector('#topupButton').onclick= async function () {
+                modal.show();
+                let pinCode = document.querySelector('#topupPinCode').value;
+                let topupButton = document.querySelector('#topupButton');
+                let myToast = document.querySelector('#myToast');
+                if (pinCode==""){
+                    let popover = page.querySelector('#failPopover');
+                    page.querySelector('#errorMessage').innerHTML="الرجاء إدخال رقم البطاقة";
+                    popover.show(topupButton);
+                    page.querySelector('#topupPinCode').value="";
+                }else {
+                    try {
+                        //API call
+                        let topupStatus = await balanceTopup(pinCode);
+
+
+                        if (topupStatus.status== "success"){
+                            let popover = page.querySelector('#successPopover');
+                            popover.show(topupButton);
+                            page.querySelector('#topupPinCode').value="";
+                            page.querySelector('#successMessage').innerHTML=topupStatus.message;
+                            page.querySelector('#balanceLabel').innerHTML=topupStatus.balance;
+                        }
+
+                        if (topupStatus.status== "fail"){
+                            let popover = page.querySelector('#failPopover');
+                            page.querySelector('#errorMessage').innerHTML=topupStatus.message;
+                            popover.show(topupButton);
+                            page.querySelector('#topupPinCode').value="";
+                        }
+                    }catch (e) {
+                        alert(e)
+                    }
+                }
+
+
+
+            }
+        });
+
+
+
+
+    }
+
+    if (page.id === 'personal-file') {
+        //load list items
+        ons.ready(async function() {
+            var modal = page.querySelector('#loadPersonalFileModal');
+            modal.show();
+            let userInfo = await getUserInfo();
+            document.querySelector('#fullName').value = userInfo.name;
+            document.querySelector('#phone').value = userInfo.phone;
+            document.querySelector('#dob').value = userInfo.dob;
+            document.querySelector('#email').value = userInfo.email;
+
+            modal.hide();
+            infiniteList.refresh();
+        });
+        // center title
+        document.addEventListener('prechange', function(event) {
+            document.querySelector('ons-toolbar .center')
+                .innerHTML = event.tabItem.getAttribute('label');
+        });
+    }
+
 });
 
 

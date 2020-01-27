@@ -18,7 +18,7 @@
         <h2>
             :رصيدك الحالي هو
         </h2>
-        <h1>500
+        <h1 id ="balanceLabel">---
         </h1>
         <p>
             دينار ليبي
@@ -29,32 +29,136 @@
         </p>
         <ons-row>
             <ons-col width="100%" >
-                <ons-input style="width: 80%" type="number" modifier="underbar" rows="4" placeholder="رقم بطاقة موبي كاش"></ons-input>
+                <ons-input id="topupPinCode" style="width: 80%" type="number" modifier="underbar" rows="4" placeholder="رقم بطاقة موبي كاش"></ons-input>
             </ons-col>
 
 
         </ons-row>
-        <h2>
-            إختر القيمة المراد شحنها
-        </h2>
-        <p>
-            <ons-radio modifier="material " input-id="radio-1" value="50" checked>قيمة 50 دينار</ons-radio>
-        </p>
-        <p>
-            <ons-radio modifier="material "   input-id="radio-2" value="100" >قيمة 100 دينار</ons-radio>
+<!--        <h2>-->
+<!--            إختر القيمة المراد شحنها-->
+<!--        </h2>-->
+<!--        <p>-->
+<!--            <ons-radio modifier="material " input-id="radio-1" value="50" checked>قيمة 50 دينار</ons-radio>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <ons-radio modifier="material "   input-id="radio-2" value="100" >قيمة 100 دينار</ons-radio>-->
 
-        </p>
-        <p>
-            <ons-radio modifier="material "   input-id="radio-3" value="150">قيمة 150 دينار</ons-radio>
+<!--        </p>-->
+<!--        <p>-->
+<!--            <ons-radio modifier="material "   input-id="radio-3" value="150">قيمة 150 دينار</ons-radio>-->
 
-        </p>
-
-
+<!--        </p>-->
 
 
-        <p style="margin-top: 10%;">
-            <ons-button id="login-button" style="width: 80%; font-weight: bold;"  >إرسال رمز التأكيد</ons-button>
+
+
+        <p style="margin-top: 30%;">
+            <ons-button id="topupButton" style="width: 80%; font-weight: bold;"  >إرسال رمز التأكيد</ons-button>
         </p>
 
     </div>
+
+    <ons-modal id="loadBalanceModal" direction="up">
+        <div style="text-align: center">
+            <p>
+                <ons-icon icon="md-spinner" size="28px" spin></ons-icon> جاري التحميل
+            </p>
+        </div>
+    </ons-modal>
+<!--    topup success popover-->
+    <ons-popover id="successPopover" direction="up" >
+        <div style="padding: 10px; text-align: center;">
+
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve" width="30%" height="30%">
+<circle style="fill:#25AE88;" cx="25" cy="25" r="25"/>
+                <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="
+	38,15 22,33 12,25 "/>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+</svg>
+            <p id="successMessage">
+            </p>
+            <p>
+                <ons-button id="hideTopupSuccessButton" onclick="successPopover.hide();loadBalanceModal.hide()" >إغلاق</ons-button>
+            </p>
+        </div>
+    </ons-popover>
+<!--   topup fail popover-->
+    <ons-popover id="failPopover" direction="up" >
+        <div style="padding: 10px; text-align: center;">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve" width="30%" height="30%">
+<circle style="fill:#D75A4A;" cx="25" cy="25" r="25"/>
+                <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16
+	"/>
+                <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34
+	"/>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+                <g>
+</g>
+</svg>
+
+            <p id="errorMessage">-</p>
+            <p>
+                <ons-button id="hideTopupSuccessButton" onclick="failPopover.hide();loadBalanceModal.hide()" >إغلاق</ons-button>
+            </p>
+        </div>
+    </ons-popover>
+
 </ons-page>

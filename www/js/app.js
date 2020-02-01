@@ -322,7 +322,6 @@ async function x1(i){
     alert('x ' + i)
 }
 async function login(mobileNo,password){
-    alert("login function here");
     try{
         let requestUrl="http://api.labas.ly//user/login?phone="+mobileNo+"&password="+password;
         let settings = {
@@ -346,6 +345,8 @@ async function login(mobileNo,password){
         }).catch(function (e) {
             alert('catch issue');
             alert(JSON.stringify(e) );
+            alert(JSON.stringify(e.error()) );
+
             res= false
         });
         return res;

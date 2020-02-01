@@ -322,28 +322,38 @@ async function x1(i){
     alert('x ' + i)
 }
 async function login(mobileNo,password){
-    let requestUrl="http://api.labas.ly//user/login?phone="+mobileNo+"&password="+password;
-    let settings = {
-        "url": requestUrl,
-        "method": "POST",
-        "timeout": 0,
-    };
+    alert("login function here");
+    try{
+        let requestUrl="http://api.labas.ly//user/login?phone="+mobileNo+"&password="+password;
+        let settings = {
+            "url": requestUrl,
+            "method": "POST",
+            "timeout": 0,
+        };
 
- await   $.ajax(settings).done(function (response) {
-     // variable to store response result
-     res = null;
-       if (response.status==="success"){
-           localStorage.token = response.data.token;
-           localStorage.userDetails = response.data;
-            res =true;
-       }else {
-           localStorage.token=null;
-           res =false;
-       }
-    }).catch(function (e) {
-        res= false
-    });
-    return res;
+        await   $.ajax(settings).done(function (response) {
+            // variable to store response result
+            res = null;
+            if (response.status==="success"){
+                alert(response.data)
+                localStorage.token = response.data.token;
+                localStorage.userDetails = response.data;
+                res =true;
+            }else {
+                localStorage.token=null;
+                res =false;
+            }
+        }).catch(function (e) {
+            alert('catch issue');
+            alert(JSON.stringify(e) );
+            res= false
+        });
+        return res;
+    }catch (e) {
+        alert(e)
+    }
+
+
 }
 async function logout(){
     try {
@@ -524,10 +534,69 @@ async function balanceTopup(pinCode){
     });
     return res;
 }
+async function registerAccount(userName,userEmail,userPhone,userPassword,userDob){
+
+    try {
+        let requestUrl="http://api.labas.ly/user/register?name="+userName+
+            "&email="+ userEmail
+            +"&phone="+ userPhone
+            +"&password="+ userPassword
+            +"&dob="+ userDob;
+        let settings = {
+            "url": requestUrl,
+            "method": "POST",
+            "timeout": 0,
+        };
+
+        await   $.ajax(settings).done(function (response) {
+            // variable to store response result
+            res = null;
+            if (response.status==="success"){
+                res =true;
+            }else {
+                localStorage.token=null;
+                res =false;
+            }
+        }).catch(function (e) {
+            res= false
+        });
+        return res;
+
+
+    }catch (e) {
+        alert("error: APP 532")
+    }
+
+}
 async function showTopupPopover(respones){
 
 }
+async function registerUser(name,phone,email,dob,password){
+    
+    try {
+        var settings = {
+            "url": "http://api.labas.ly/user/register",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "name": name,
+                "email": phone,
+                "phone": email,
+                "password": password,
+                "dob": dob
+            },
+        };
 
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            alert('done')
+            return response
+        });
+    }catch (e) {
+        return e
+        console.log('request got here!' + e);
+    }
+}
 
 
 document.addEventListener('init', async function(event) {
@@ -565,7 +634,88 @@ document.addEventListener('init', async function(event) {
             alert("you are free to go, token: " + tokenStatus)
         }
     }
+    if (page.id==='register'){
+        try {
+            page.querySelector('#submit-register-button').onclick= async function () {
+                page.querySelector('#loadRegistModal').show();
+                let firstName = page.querySelector('#firstName').value;
+                let familyName = page.querySelector('#familyName').value;
+                let phone = page.querySelector('#phone').value;
+                let email = page.querySelector('#email').value;
+                let dob = page.querySelector('#dob').value;
+                let password = page.querySelector('#password').value;
+                let PasswordConfirmation = page.querySelector('#PasswordConfirmation').value;
+                //data entry validation.
+                if (firstName==""){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من الاسم الاول";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                if (familyName==""){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من الاسم العائلة";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                if (phone==""){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من رقم الهاتف";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                if (email==""){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من البريد الإلكتروني";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                if (dob==""){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من تاريخ الميلاد";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                if (password==""){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من كلمة المرور";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                if (PasswordConfirmation==""){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من  إعادة كتابة كلمة المرور";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                if (PasswordConfirmation!==password){
+                    page.querySelector('#errorMessage').innerHTML="الرجاء التأكد من مطابقة كلمة المرور";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
+                console.log('request got here!' + page.querySelector('#term-agree-check').checked);
+                if (page.querySelector('#term-agree-check').checked!==true){
+                    page.querySelector('#errorMessage').innerHTML="لا يمكن الإستمرار إلا بعد الموافقة على شروط الخدمة.";
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+                    return null
+                }
 
+                let registerStatus = await registerAccount(firstName,email,phone,password,dob);
+                console.log(registerStatus);
+                if (registerStatus.status==="success"){
+                    page.querySelector('#successPopover').show(page.querySelector('#PasswordConfirmation'));
+                }else {
+
+                    page.querySelector('#errorMessage').innerHTML=registerStatus.error;
+                    page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
+
+                }
+
+            }
+            page.querySelector('#privacy-policy--button').onclick= function () {
+                // page.querySelector('#failPopover').show();
+                page.querySelector('#privacy-policy-dialog').show();
+            }
+        }catch (e) {
+
+        }
+
+
+        // onclick="document.getElementById('my-dialog').show();"
+    }
     if (page.id === 'login') {
         page.onload = hasToken();
         page.querySelector('#login-button').onclick = async function () {
@@ -574,14 +724,15 @@ document.addEventListener('init', async function(event) {
                 document.querySelector('#loginLoadingToast').toggle();
                 let username = document.querySelector('#usernameInput').value;
                 let password = document.querySelector('#passwordInput').value;
-                if ( await login(username, password)==true) {
+                loginStatus = await login(username, password);
+                alert(loginStatus);
+                if (loginStatus ===true) {
                     document.querySelector('#loginLoadingToast').hide();
-
                     document.querySelector('#myNavigator').pushPage('pages/homex.html');
                }else{
                     let options ={
-                        message:"nabil",
-                        timeout: 60000,
+                        message:"يوجد خطاء في اسم المستخدم او كلمة المرور",
+                        timeout: 800,
                         class:"title",
                         messageHTML:"<div>pla pla</div>",
                     }

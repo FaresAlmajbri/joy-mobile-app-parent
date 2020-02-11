@@ -7,20 +7,24 @@
         }
     </style>
     <ons-toolbar>
-        <div class="left"><ons-back-button>الملف الطبي</ons-back-button></div>
-        <div class="right" style="margin-right: 10vw">الجلسات</div>
+        <div class="left"><ons-back-button id="backButton">الملف الطبي</ons-back-button></div>
+        <div class="right" style="margin-right: 10vw">العمليات</div>
     </ons-toolbar>
     <ons-row>
         <ons-col style = "direction: rtl;">
             <div style="text-align: center; " >
                 <ons-list>
-                    <ons-lazy-repeat id="myOperations-infinite-list" modifier="longdivider"></ons-lazy-repeat>
-                </ons-list>
-
-                <ons-list>
+                    <ons-lazy-repeat id="Operations-infinite-list" modifier="longdivider"></ons-lazy-repeat>
                 </ons-list>
             </div>
         </ons-col>
     </ons-row>
 
+    <ons-modal id="loadOperationsModal" direction="up">
+        <div style="text-align: center">
+            <p>
+                <ons-icon icon="md-spinner" size="28px" spin></ons-icon> جاري التحميل
+            </p>
+        </div>
+    </ons-modal>
 </ons-page>

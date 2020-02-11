@@ -334,7 +334,6 @@ async function login(mobileNo,password){
             // variable to store response result
             res = null;
             if (response.status==="success"){
-                alert(response.data)
                 localStorage.token = response.data.token;
                 localStorage.userDetails = response.data;
                 res =true;
@@ -343,9 +342,10 @@ async function login(mobileNo,password){
                 res =false;
             }
         }).catch(function (e) {
-            alert('catch issue');
-            alert(JSON.stringify(e) );
-            alert(JSON.stringify(e.error()) );
+
+            // alert('catch issue');
+            // alert(JSON.stringify(e) );
+            // alert(JSON.stringify(e.error()) );
 
             res= false
         });
@@ -435,6 +435,26 @@ async function getSpeciality(clinicId){
         res = null;
         if (response.status==="success"){
             res =response.specialties;
+        }else {
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+}
+async function getOperations(){
+    let requestUrl="http://api.labas.ly/medicalfile/procedures?token="+localStorage.token;
+    let settings = {
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+    await   $.ajax(settings).done(function (response) {
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.data;
         }else {
             res =false;
         }
@@ -632,7 +652,7 @@ document.addEventListener('init', async function(event) {
         if (!localStorage.token){
             alert("you need to login")
         }else {
-            alert("you are free to go, token: " + tokenStatus)
+            // alert("you are free to go, token: " + tokenStatus)
         }
     }
     if (page.id==='register'){
@@ -687,7 +707,6 @@ document.addEventListener('init', async function(event) {
                     page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
                     return null
                 }
-                console.log('request got here!' + page.querySelector('#term-agree-check').checked);
                 if (page.querySelector('#term-agree-check').checked!==true){
                     page.querySelector('#errorMessage').innerHTML="لا يمكن الإستمرار إلا بعد الموافقة على شروط الخدمة.";
                     page.querySelector('#failPopover').show(page.querySelector('#PasswordConfirmation'));
@@ -696,7 +715,7 @@ document.addEventListener('init', async function(event) {
 
                 let registerStatus = await registerAccount(firstName,email,phone,password,dob);
                 console.log(registerStatus);
-                if (registerStatus.status==="success"){
+                if (registerStatus==="success"){
                     page.querySelector('#successPopover').show(page.querySelector('#PasswordConfirmation'));
                 }else {
 
@@ -726,7 +745,6 @@ document.addEventListener('init', async function(event) {
                 let username = document.querySelector('#usernameInput').value;
                 let password = document.querySelector('#passwordInput').value;
                 loginStatus = await login(username, password);
-                alert(loginStatus);
                 if (loginStatus ===true) {
                     document.querySelector('#loginLoadingToast').hide();
                     document.querySelector('#myNavigator').pushPage('pages/homex.html');
@@ -737,19 +755,14 @@ document.addEventListener('init', async function(event) {
                         class:"title",
                         messageHTML:"<div>pla pla</div>",
                     }
-                    ons.notification.toast( options);
                     document.querySelector('#loginLoadingToast').hide();
+                    ons.notification.toast( options);
                     document.querySelector('#usernameInput').value="";
                     document.querySelector('#passwordInput').value="";
                }
 
             } catch (e) {
-                let options ={
-                    timeout: 2000,
-                    class:"title",
-                    messageHTML:"<div>pla pla</div>",
-                }
-                ons.notification.toast('Toast!', options);
+
             }
             // document.querySelector('#myNavigator').pushPage('main.html', {data: {title: 'Page 2'}});
         };
@@ -955,35 +968,32 @@ document.addEventListener('init', async function(event) {
 
     }
 
-    if (page.id === 'myOperations') {
-        //load list items
-        ons.ready(function() {
-            var infiniteList = document.getElementById('myOperations-infinite-list');
-
-            infiniteList.delegate = {
-                createItemContent: function(i) {
-                    return ons.createElement('<ons-list-item  expandable><div class="center"><span>عملية إزالة مرارة</span></div><div class="center"><span class="list-item__title">عملية إزالة مرارة</span><div class="list-item__subtitle"><span>11/12/2019</span></div> </div><div class="expandable-content"><span>الطبيب: د.عبدالباسط الغرياني</span><br><span>التخصص: أمراض جلدية</span><br><span>العملية: إزالة الزايدة الدودية</span></div></ons-list-item>')
-                    // return ons.createElement('<ons-list-item id="Select-Doctor-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
-                },
-                countItems: function() {
-                    return 30;
-                }
-            };
-
-            infiniteList.refresh();
-        });
-        // center title
-        document.addEventListener('prechange', function(event) {
-            document.querySelector('ons-toolbar .center')
-                .innerHTML = event.tabItem.getAttribute('label');
-        });
-
-        //   list button function
-        page.querySelector('#showSessionInfoButton').onclick= async function () {
-            document.querySelector('#myNavigator').pushPage('pages/sessionInfo.html');
-        }
-
-    }
+    // if (page.id === 'myOperations') {
+    //     //load list items
+    //     ons.ready(function() {
+    //         var infiniteList = document.getElementById('myOperations-infinite-list');
+    //
+    //         infiniteList.delegate = {
+    //             createItemContent: function(i) {
+    //                 return ons.createElement('<ons-list-item  expandable><div class="center"><span>عملية إزالة مرارة</span></div><div class="center"><span class="list-item__title">عملية إزالة مرارة</span><div class="list-item__subtitle"><span>11/12/2019</span></div> </div><div class="expandable-content"><span>الطبيب: د.عبدالباسط الغرياني</span><br><span>التخصص: أمراض جلدية</span><br><span>العملية: إزالة الزايدة الدودية</span></div></ons-list-item>')
+    //                 // return ons.createElement('<ons-list-item id="Select-Doctor-Button" tappable> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div> العيادة رقم ' + i + '  </ons-list-item>');
+    //             },
+    //             countItems: function() {
+    //                 return 30;
+    //             }
+    //         };
+    //
+    //         infiniteList.refresh();
+    //     });
+    //     // center title
+    //     document.addEventListener('prechange', function(event) {
+    //         document.querySelector('ons-toolbar .center')
+    //             .innerHTML = event.tabItem.getAttribute('label');
+    //     });
+    //
+    //     var modal = page.querySelector('#loadOperationsModal');
+    //     modal.show();
+    // }
 
     if (page.id === 'Tab1') {
         // document.addEventListener('prechange', function(event) {
@@ -1152,6 +1162,42 @@ document.addEventListener('init', async function(event) {
                 .innerHTML = event.tabItem.getAttribute('label');
         });
     }
+
+    if (page.id === 'myOperations'){
+        ons.ready(async function() {
+            var modal = page.querySelector('#loadOperationsModal');
+            modal.show();
+            var infiniteList = document.getElementById('Operations-infinite-list');
+            let OperationsList = await getOperations();
+            console.log(OperationsList);
+            if (OperationsList.length>0){
+                infiniteList.delegate = {
+                    createItemContent: function(i) {
+
+                        // return ons.createElement('<ons-list-item "> <div class="right"><ons-icon icon="chevron-left" class="list-item__icon"></ons-icon></div>' + OperationsList[i].name + '  </ons-list-item>');
+                        return ons.createElement('<ons-list-item><div class="center"><span>10/10/2019</span></div><div class="center"><span class="list-item__title">'+OperationsList[i].name +'</span><div class="list-item__subtitle"><span>'+OperationsList[i].preformed_at.slice(0,10) +'</span></div> </div></div></ons-list-item>');
+                    },
+                    countItems: function() {
+                        return OperationsList.length;
+                    }
+                };
+                modal.hide();
+                infiniteList.refresh();
+            }else{
+                modal.hide();
+                // document.querySelector('#myNavigator').popPage();
+                // $('#OuterDiv').append('<div id="innerDiv"></div>');
+                // $('#Operations-infinite-list').append('<ons-list-item "> <div class="center">لا توجد اي عمليات </div></ons-list-item>');
+                $('#Operations-infinite-list').append('<div style="margin-top:40vh; margin-left:20vh;">لا توجد اي عمليات </div>');
+
+            }
+
+
+        });
+    }
+
+
+
 
 });
 

@@ -508,6 +508,29 @@ async function getDoctorRoutes(clinicId,doctorId){
 async function showSelectSpecialityPage(clinicId){
         document.querySelector('#myNavigator').pushPage('pages/selectSpeciality.html',{data: {clinic: clinicId}});
 }
+async function getMedicalHistory(){
+    let requestUrl="http://api.labas.ly/medicalfile/history?token="+localStorage.token;
+    // let requestUrl="http://api.labas.ly/medicalfile/history?token=5dunWirGVUlQTMKfk1A7z26LTwzDqNM7QLnkbYGGZ8XDBXqj9X";
+    let settings = {
+        "url": requestUrl,
+        "method": "GET",
+        "timeout": 0,
+    };
+    await   $.ajax(settings).done(function (response) {
+        // console.log(response);
+
+        // variable to store response result
+        res = null;
+        if (response.status==="success"){
+            res =response.data;
+        }else {
+            res =false;
+        }
+    }).catch(function (e) {
+        res= false
+    });
+    return res;
+};
 async function showSelectDoctorPage(specialtyId,clinicId){
     document.querySelector('#myNavigator').pushPage('pages/selectDoctor.html',{data: {specialty: specialtyId,clinic: clinicId}});
 }
@@ -1196,6 +1219,24 @@ document.addEventListener('init', async function(event) {
         });
     }
 
+
+    if (page.id === 'medicalHistory'){
+        ons.ready(async function() {
+            var modal = page.querySelector('#loadMedicalHistoryModal');
+            modal.show();
+            var medicalHistoryInput = document.getElementById('medicalHistoryInput');
+            let medicalHistory = await getMedicalHistory();
+            if(medicalHistory!=null){
+                medicalHistoryInput.innerText= medicalHistory;
+            }else {
+                medicalHistoryInput.innerText= "لاتوجد بيانات";
+
+            }
+
+            modal.hide();
+
+        });
+    }
 
 
 

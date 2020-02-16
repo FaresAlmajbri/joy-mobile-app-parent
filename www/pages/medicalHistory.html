@@ -17,8 +17,16 @@
     <div  style="text-align: center; margin-top: 10%; font-family: tajawal">
         <ons-row>
             <ons-col width="100%" >
-                <textarea style="width: 80%" class="textarea" rows="30vh" placeholder="التاريخ المرضي"></textarea>
+                <textarea id= "medicalHistoryInput"style="width: 80%" class="textarea" rows="30vh" placeholder="التاريخ المرضي"></textarea>
             </ons-col>
         </ons-row>
     </div>
+
+    <ons-modal id="loadMedicalHistoryModal" direction="up">
+        <div style="text-align: center">
+            <p>
+                <ons-icon icon="md-spinner" size="28px" spin></ons-icon> جاري التحميل
+            </p>
+        </div>
+    </ons-modal>
 </ons-page>
